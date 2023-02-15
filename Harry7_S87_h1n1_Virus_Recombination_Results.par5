@@ -1,0 +1,9 @@
+Segment	Start	Stop	Forward_support	Reverse_support	Total_support	Fuzz_factor
+h1n1Ha	60	1537	5	0	5	60
+h1n1Pa	136	1914	4	1	5	136
+h1n1Pb1	137	2021	12	8	20	137
+h1n1Pb2	101	2125	40	0	40	101
+h1n1Pb2	163	2074	0	9	9	2074
+h1n1Pb2	164	2075	14	0	14	164
+h1n1Pb2	1723	2109	6	9	15	1723
+h1n1Pb2	99	2123	0	21	21	2123
