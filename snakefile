@@ -11,7 +11,7 @@ subtype = config['subtype']
 
 rule all:
 	input:
-		expand('output/{ppID}_{subtype}_Virus_Recombination_Results.par5', ppID = ppID, subtype = subtype)
+		expand('output/{ppID}_{subtype}_figure.txt', ppID = ppID, subtype = subtype)
 	
 rule fastp:
 	message: "Merging fastq files"
@@ -90,3 +90,13 @@ rule output_pearl:
 		"perl scripts/parse-recomb-results-Fuzz.pl -d 5 -i {params.in_file} -o {output}"
 
 
+rule figure_plot:
+	message: "Generating figure"
+	input:
+		'output/{ppID}_{subtype}_Virus_Recombination_Results.par5'
+	output:
+		'output/{ppID}_{subtype}_figure.txt'
+	shell:'''
+		 python scripts/figure.py {input}
+		 touch {output}
+	'''
