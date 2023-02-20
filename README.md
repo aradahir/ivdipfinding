@@ -103,10 +103,10 @@ where the definitions are:
 6. total_support: forward + reverse support
 7. fuzz_factor: the report of repeated sequence adjacent the junction sites.(default is 3'end)
 
-possible improvement
+Example of output visualization can be found here ([h1n1Pb1.pdf](https://github.com/aradahir/ivdipfinding/files/10779420/h1n1Pb1.pdf))
 
-1. visualization of results
-2. parameter tunning in each process
+# warning
+this pipeline is ready to use. most of parameter tunning cannot be adjusted by using config. for further adjustment, the changes can be done in snakemake scripts. (named snakefile)
 
 # acknowledgement
 this pipeline created by referencing the pipeline from this repository (https://github.com/BROOKELAB/Influenza-virus-DI-identification-pipeline)
