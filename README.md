@@ -24,7 +24,7 @@ This project created with:
 1. clone this repository. Below is for linux-based manipulation:
 
 	```
-	git clone ssh://git@github.com:aradahir/ivdipfinding.git 
+	git clone ssh https://git@github.com:aradahir/ivdipfinding.git 
 	cd vidipfinding
 	```
 
@@ -51,11 +51,16 @@ This project created with:
 
  		{sample}_L001_{R1,R2}_001.fastq.gz
 
+ - Open the environment
+ 
+ 		```
+		conda activate snakemake
+		```
  - Run the pipeline
  		thread can be adjusted by changing from 1 into the specific number of thread
 
  		```
- 		snakemake -c 1
+ 		snakemake -j 1
 		```
 # result interpretation
 
