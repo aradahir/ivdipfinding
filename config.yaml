@@ -1,0 +1,6 @@
+# this is a config file for idv_script, developed for finding the recombination of influenza HA genes 
+# subtype can be changed into h1n1, h3n2, and bvic
+subtype: 'h1n1'
+# working directory is the place where contains the folder of data and pipeline. 
+# /data/fastq must contain the fastq files with pattern {sampleName}_{sampleID}_L001_{read}_001.fastq.gz
+work_dir: 'data/'
