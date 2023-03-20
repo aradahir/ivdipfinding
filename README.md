@@ -44,7 +44,7 @@ This project created with:
 
  - Configure some parameters:
  	 
- 		Adjusting the HA subytypes and working directory in config files. All other parameters are fixed in 
+ 	Adjusting the HA subytypes and working directory in config files. All other parameters are fixed in 
     the pipeline. However, for flexibility, it could be changed in the snakemake script.
 
  - Input format of .fastq files. The input should be placed into the /data folder.
