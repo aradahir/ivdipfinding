@@ -38,6 +38,13 @@ This project created with:
 	conda install --force-reinstall -y -q --name virema -c conda-forge --file requirement_virema.txt
 	```
 
+	manual install might be required for pandas and matplotlib package.
+	
+	```
+	conda install -c anaconda pandas
+	pip install matplotlib
+	```
+	
 	3. activate the snakemake environment for running the pipeline.
 
 # usage
