@@ -4,3 +4,24 @@ subtype: 'h1n1'
 # working directory is the place where contains the folder of data and pipeline. 
 # /data/fastq must contain the fastq files with pattern {sampleName}_{sampleID}_L001_{read}_001.fastq.gz
 work_dir: 'data/'
+
+## parameter for Virema adjustment
+# microindel length is a number of nucleotides to decide whether sequence contains recombinations or indel, default is 20
+micro_indel_length: '20'
+# the end of sequences that junction starts, default is 3' end
+Defuzz: '3'
+# Number of mismatches tolerated in mapped seed and in mapped segments. Default is 1
+N: '1'
+# Number of nucleotides not allowed to have mismatches at 3' end and 5' of segment. Overrides seperate ThreePad and FivePad settings. Default is 5.
+X: '8'
+# available processors
+p: '6'
+
+##parameter for Bowtie adjustment
+# minimum alignment score; default for end-to-end alignment is -0.6 + -0.6 * L, where L is the read length 
+bowtie_penalty: 'L,0,-0.3'
+
+## parameter for identifying recombination
+read_coverage: '5'
+
+# all shown values come from the tutorials, can be adjust

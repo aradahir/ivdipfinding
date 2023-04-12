@@ -8,6 +8,13 @@ configfile: "config.yaml"
 (ppID,readID) = glob_wildcards("data/{pp}_L001_{read}_001.fastq.gz")
 workspace = config['work_dir']
 subtype = config['subtype']
+micro_indel = config['micro_indel_length']
+Defuzz = config['Defuzz']
+N = config['N']
+X = config['X']
+p = config['p']
+coverage = config['read_coverage']
+penalty = config['bowtie_penalty']
 
 rule all:
 	input:
@@ -39,7 +46,7 @@ rule bowtie2:
  		bowtie2 \
  		-x {params.ref} \
  		-U {input.merged_fastq} \
- 		--score-min L,0,-0.3 \
+ 		--score-min {penalty} \
  		--al {params.name_align} \
  		--un {params.unaligned_fq} > {params.sam_file}
  		touch {output.status}
@@ -64,14 +71,14 @@ rule virema:
 	shell:'''
 		awk '{{print (NR%4 == 1) ? "@1_" ++i : $0}}' {params.in_file} >  {params.rename_file}
 		python libs/ViReMa_0.25/ViReMa.py \
-		--MicroInDel_Length 20 \
+		--MicroInDel_Length {micro_indel} \
 		-DeDup \
-		--Defuzz 3 \
-		--N 1 \
-		--X 8 \
+		--Defuzz {Defuzz} \
+		--N {N} \
+		--X {X} \
 		--Output_Tag {params.out_tag} \
 		-ReadNamesEntry \
-		--p 6 {params.ref_index} {params.in_file} {params.dedup_file}
+		--p {p} {params.ref_index} {params.in_file} {params.dedup_file}
 		
 		mv {params.dedup_file} virema_result
 		mv {params.ddedup_file} virema_result
@@ -87,7 +94,7 @@ rule output_pearl:
 	params:
 		in_file  = 'virema_result/{ppID}_{subtype}_Virus_Recombination_Results.txt',
 	shell:
-		"perl scripts/parse-recomb-results-Fuzz.pl -d 5 -i {params.in_file} -o {output}"
+		"perl scripts/parse-recomb-results-Fuzz.pl -d {coverage} -i {params.in_file} -o {output}"
 
 
 rule figure_plot:
